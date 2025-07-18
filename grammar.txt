@@ -1,0 +1,24 @@
+Program ::= MainClass Classes
+MainClass ::= "class" <IDENTIFIER> "{" "public static void main(String[] a) { System.out.println(); } }"
+Classes ::= ClassDecl Classes | ϵ
+ClassDecl ::= "class" <IDENTIFIER> ClassA
+ClassA ::= "extends" <IDENTIFIER> "{" ClassB | "{" ClassB
+ClassB ::=  "}"
+          | "static" VarDecl ClassB
+          | VarDecl ClassB
+          | "public" MethodDecl ClassC
+ClassC ::=  "}"
+          | "public" MethodDecl ClassC
+VarDecl ::= Type <IDENTIFIER> ";"
+MethodDecl ::= Type <IDENTIFIER> "(" MethodA
+MethodA ::= ")" "{" "}"
+          | Type <IDENTIFIER> MethodB
+MethodB ::= ")" "{" "}"
+          | "," Type <IDENTIFIER> MethodB
+Type ::= SimpleType ArrayPart
+SimpleType ::= "boolean"
+          | "float"
+          | "int"
+          | <IDENTIFIER>
+ArrayPart ::= ϵ
+          | "[" "]" ArrayPart
