@@ -15,3 +15,28 @@ Elementos que podem ou não aparecer (como a herança de uma classe, que é opci
 
 A principal dificuldade foi decidir o quanto de detalhe deveria ser incluído na AST. Por exemplo, fiquei em dúvida se deveria representar o corpo do método `main`, já que na gramática ele é fixo e não tem variações. Isso gerou certa insegurança sobre o que realmente era essencial para a árvore. No fim, optei por uma abordagem mais simples, focando só nos elementos que realmente mudam de um programa para outro, para manter a AST
 
+### Output do meu programa
+
+```yaml
+Program:
+    main_class:
+        MainClass:
+            name: Main
+    classes:
+        - ClassDecl:
+                name: Point
+                superclass: null
+                members:
+                    - VarDecl:
+                            var_type:
+                                Type:
+                                    base_type: int
+                                    is_array: false
+                            name: x
+                    - VarDecl:
+                            var_type:
+                                Type:
+                                    base_type: int
+                                    is_array: false
+                            name: y
+```
